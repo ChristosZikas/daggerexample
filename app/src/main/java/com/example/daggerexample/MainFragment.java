@@ -17,6 +17,8 @@ import javax.inject.Named;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.example.daggerexample.AppInit.getInjector;
+
 public class MainFragment extends Fragment {
 
     @BindView(R.id.tv_1)
@@ -27,7 +29,6 @@ public class MainFragment extends Fragment {
 
     @BindView(R.id.tv_3)
     TextView textView3;
-
 
     @Inject
     Model2 model2;
@@ -45,11 +46,13 @@ public class MainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
-        DaggerAppComponent.create().inject(this);
-
+//        DaggerAppComponent.create().inject(this);
+        getInjector().inject(this);
         textView1.setText(s);
         textView2.setText(model1.getString());
         textView3.setText(model2.m2);
+
+        model2.m2 = "Test Change Singleton";
 
         return view;
     }

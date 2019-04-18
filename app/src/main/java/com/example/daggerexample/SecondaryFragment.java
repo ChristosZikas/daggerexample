@@ -18,6 +18,8 @@ import javax.inject.Named;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.example.daggerexample.AppInit.getInjector;
+
 public class SecondaryFragment extends Fragment {
 
     @BindView(R.id.tv_1)
@@ -63,7 +65,9 @@ public class SecondaryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_secondary, container, false);
         ButterKnife.bind(this, view);
 
-        DaggerAppComponent.builder().build().subComponentBuilder().build().inject(this);
+        DaggerAppComponent.create().subComponentBuilder().build().inject(this);
+
+        getInjector().subComponentBuilder().build().inject(this);
 
         textView1.setText(s);
         textView2.setText(model1.getString());
