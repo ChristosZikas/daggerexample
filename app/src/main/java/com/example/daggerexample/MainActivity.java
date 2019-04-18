@@ -1,11 +1,8 @@
 package com.example.daggerexample;
 
-import android.app.Application;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-
-import com.example.daggerexample.dagger.DaggerAppComponent;
 
 import javax.inject.Inject;
 
